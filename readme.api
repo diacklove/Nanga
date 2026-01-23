@@ -1,0 +1,8 @@
+POST https://api.zapwize.com/v1/whatsapp/message
+Authorization: Bearer ZPW_3245b91eb263552963b8
+{
+  "chatid": "22656920671",
+  "content": {
+    "text": "Hello world"
+  }
+}

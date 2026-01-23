@@ -1,0 +1,76 @@
+> DEBUG PID: 2254500 (v4)
+====================================================
+PID           : 2254507
+Node.js       : v16.20.2
+Total.js      : v4098
+OS            : linux 5.4.0-216-generic
+Memory        : 9.12 MB / 11.64 MB
+User          : root
+====================================================
+Name          : Total.js
+Version       : 1.0.0
+Date          : 2026-01-19 17:08:22
+Mode          : debug
+====================================================
+Directory     : /www/www/zapwize_com-pcidss
+node_modules  : /www/node_modules/total4/
+====================================================
+
+Socket: /www/www/zapwize_com-pcidss/superadmin.socket
+
+--- ADD --- [ 2026-01-20 11:37:26 ] --------> /plugins/account/index.js
+--- UPD --- [ 2026-01-20 11:37:39 ] --------> /plugins/account/index.js
+--- ADD --- [ 2026-01-20 11:38:16 ] --------> /plugins/account/schemas/account.js
+--- UPD --- [ 2026-01-20 11:38:28 ] --------> /plugins/account/schemas/account.js
+--- ADD --- [ 2026-01-20 11:38:52 ] --------> /plugins/account/schemas/account-notification.js
+--- UPD --- [ 2026-01-20 11:38:56 ] --------> /plugins/account/schemas/account-notification.js
+--- ADD --- [ 2026-01-20 11:39:14 ] --------> /plugins/account/schemas/index.js
+--- REM --- [ 2026-01-20 11:39:46 ] --------> /plugins/account/schemas/index.js
+--- ADD --- [ 2026-01-20 11:39:46 ] --------> /plugins/account/schemas/user-dashboard.js
+--- UPD --- [ 2026-01-20 11:39:58 ] --------> /plugins/account/schemas/user-dashboard.js
+ReferenceError: REDIS_STORE is not defined
+    at Object.<anonymous> (/www/www/zapwize_com-pcidss/plugins/account/schemas/user-dashboard.js:2:28)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Module.require (node:internal/modules/cjs/loader:1100:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at install (/www/node_modules/total4/index.js:6595:10)
+    at /www/node_modules/total4/index.js:6249:40
+    at Array.AP.async (/www/node_modules/total4/utils.js:5447:3)
+ERROR ======= 2026-01-20 11:39:58: ReferenceError ---> ReferenceError: REDIS_STORE is not defined ReferenceError: REDIS_STORE is not defined
+    at Object.<anonymous> (/www/www/zapwize_com-pcidss/plugins/account/schemas/user-dashboard.js:2:28)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Module.require (node:internal/modules/cjs/loader:1100:19)
+    at require (node:internal/modules/cjs/helpers:119:18)
+    at install (/www/node_modules/total4/index.js:6595:10)
+    at /www/node_modules/total4/index.js:6249:40
+    at Array.AP.async (/www/node_modules/total4/utils.js:5447:3)
+--- REM --- [ 2026-01-20 11:40:31 ] --------> /plugins/account/schemas/user-dashboard.js
+--- ADD --- [ 2026-01-20 11:42:36 ] --------> /plugins/notifications/index.js
+--- ADD --- [ 2026-01-20 11:42:51 ] --------> /plugins/notifications/schemas/notifications.js
+--- UPD --- [ 2026-01-20 11:42:57 ] --------> /plugins/notifications/schemas/notifications.js
+--- UPD --- [ 2026-01-20 11:43:26 ] --------> /plugins/notifications/index.js
+--- ADD --- [ 2026-01-20 11:52:24 ] --------> /definitions/auth.js
+--- ADD --- [ 2026-01-20 11:52:29 ] --------> /definitions/db.js
+--- ADD --- [ 2026-01-20 11:52:32 ] --------> /definitions/init.js
+--- UPD --- [ 2026-01-22 14:53:13 ] --------> /plugins/account/schemas/account.js
+--- ADD --- [ 2026-01-22 14:53:49 ] --------> /plugins/users/index.js
+--- ADD --- [ 2026-01-22 14:53:49 ] --------> /plugins/users/schemas/users.js
+--- ADD --- [ 2026-01-22 14:54:06 ] --------> /plugins/terminals/index.js
+--- ADD --- [ 2026-01-22 14:54:06 ] --------> /plugins/terminals/schemas/terminals.js
+--- ADD --- [ 2026-01-22 14:54:40 ] --------> /plugins/fraud/index.js
+--- ADD --- [ 2026-01-22 14:54:40 ] --------> /plugins/transactions/index.js
+--- ADD --- [ 2026-01-22 14:54:40 ] --------> /plugins/fraud/schemas/fraud.js
+--- ADD --- [ 2026-01-22 14:54:40 ] --------> /plugins/transactions/schemas/transactions.js
+--- ADD --- [ 2026-01-22 14:55:30 ] --------> /plugins/alerts/index.js
+--- ADD --- [ 2026-01-22 14:55:30 ] --------> /plugins/audit/index.js
+--- ADD --- [ 2026-01-22 14:55:30 ] --------> /plugins/alerts/schemas/alerts.js
+--- ADD --- [ 2026-01-22 14:55:30 ] --------> /plugins/audit/schemas/audit.js
+--- ADD --- [ 2026-01-22 14:56:31 ] --------> /plugins/pci/index.js
+--- ADD --- [ 2026-01-22 14:56:31 ] --------> /plugins/pci/schemas/pci.js
+--- UPD --- [ 2026-01-22 21:00:27 ] --------> /plugins/transactions/schemas/transactions.js

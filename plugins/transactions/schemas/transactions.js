@@ -1,0 +1,69 @@
+NEWSCHEMA('Transactions', function(schema) {
+
+	schema.define('id', 'String(50)');
+	schema.define('terminalid', 'String(50)', true);
+	schema.define('reference', 'String(100)', true);
+	schema.define('currency', 'String(3)', true);
+	schema.define('channel', 'String(20)', true);
+	schema.define('country', 'String(2)', true);
+	schema.define('city', 'String(100)', true);
+	schema.define('cardhash', 'String(200)', true);
+	schema.define('status', 'String(20)', true);
+	schema.define('amount', 'Number', true);
+	schema.define('dttransaction', 'Date', true);
+
+	// List transactions
+	schema.action('query', {
+		name: 'List Transactions',
+		query: 'search:String',
+		action: async function($) {
+			var db = DB();
+			var builder = db.find('tbl_transaction');
+
+			$.query.search && builder.search('reference', $.query.search);
+			builder.sort('dttransaction', true);
+
+			var response = await builder.promise();
+			$.callback(response);
+		}
+	});
+
+	// Read transaction
+	schema.action('read', {
+		name: 'Read Transaction',
+		params: '*id:String',
+		action: async function($) {
+			var db = DB();
+			var item = await db.read('tbl_transaction').where('id', $.params.id).promise();
+
+			if (!item) {
+				$.invalid('@(Transaction not found)');
+				return;
+			}
+
+			$.callback(item);
+		}
+	});
+
+	// Create transaction (Ingest)
+	schema.action('create', {
+		name: 'Ingest Transaction',
+		input: 'terminalid:String,reference:String,currency:String,channel:String,country:String,city:String,cardhash:String,status:String,amount:Number,dttransaction:Date',
+		action: async function($, model) {
+			// This might be called by a system user or API key, ensuring 'users' or 'terminals' role
+			// For now, allow authenticated users.
+
+			var db = DB();
+			model.id = UID();
+			model.dtcreated = NOW;
+
+			await db.insert('tbl_transaction', model).promise();
+
+			// Optional: Trigger async analysis here if we were doing it in real-time,
+			// but spec says "backend does not perform ML".
+			// So we just store it.
+
+			$.success(model.id);
+		}
+	});
+});
