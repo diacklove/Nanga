@@ -15,16 +15,17 @@ NEWSCHEMA('Audit', function(schema) {
 		action: async function($) {
 			// "support investigation... central to PCI DSS"
 			// Only auditor or admin
-			if (!$.user.sa && $.user.role !== 'administrator' && $.user.role !== 'auditor') {
+			
+			if (!global.hasPermission($.user, 'audit')) {
 				$.invalid('@(Not authorized)');
 				return;
 			}
 
 			var db = DB();
-			var builder = db.find('tbl_audit_log');
+			var builder = db.find('view_audit_ui');
 
-			$.query.search && builder.search('action,resource,userid', $.query.search);
-			builder.sort('dtcreated', true);
+			$.query.search && builder.search('actor,action,target', $.query.search);
+			builder.sort('time', true);
 
 			var response = await builder.promise();
 			$.callback(response);

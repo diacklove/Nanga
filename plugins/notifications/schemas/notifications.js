@@ -1,8 +1,18 @@
 NEWSCHEMA('Notifications', function(schema) {
+	function ensureAccess($) {
+		if (!global.hasPermission($.user, 'notification')) {
+			$.invalid('@(Not authorized)');
+			return false;
+		}
+		return true;
+	}
+
 	schema.action('list', {
 		name: 'List all notifications',
 		query: 'search:String,title:String,isread:Boolean',
 		action: async function($) {
+			if (!ensureAccess($))
+				return;
 			let db = DATA;
 			db.autoquery($.query, 'id:String,title:String,isread:Boolean', 'dtcreated_desc', 50);
 			$.query.search && db.search('search', $.query.search);
@@ -22,6 +32,8 @@ NEWSCHEMA('Notifications', function(schema) {
 		name: 'List all notifications',
 		input: '*filter:{all|unread}',
 		action: async function($, model) {
+			if (!ensureAccess($))
+				return;
 			let builder = DATA.find('tbl_notification');
 			model.filter == 'unread' && builder.where('isread', false);
 			builder.where('userid', $.user.id);
@@ -36,10 +48,30 @@ NEWSCHEMA('Notifications', function(schema) {
 		}
 	});
 
+	schema.action('open', {
+		name: 'Unread notification count',
+		action: async function($) {
+			if (!ensureAccess($))
+				return;
+			DATA.count('tbl_notification')
+				.where('userid', $.user.id)
+				.where('isread', false)
+				.callback(function(err, count) {
+					if (err) {
+						$.invalid(err);
+						return;
+					}
+					$.callback({ count: count || 0 });
+				});
+		}
+	});
+
 	schema.action('read', {
 		name: 'Read a specific notification',
 		params: '*id:String',
 		action: async function($) {
+			if (!ensureAccess($))
+				return;
 			DATA.read('tbl_notification').id($.params.id).error(404).callback($.callback);
 		}
 	});
@@ -49,6 +81,8 @@ NEWSCHEMA('Notifications', function(schema) {
 		name: 'Mark as read a specific notification',
 		params: '*id:String',
 		action: async function($) {
+			if (!ensureAccess($))
+				return;
 			DATA.update('tbl_notification', { isread: true, dtread: NOW }).id($.params.id).error(404).callback($);
 		}
 	});
@@ -56,6 +90,8 @@ NEWSCHEMA('Notifications', function(schema) {
 	schema.action('all_read', {
 		name: 'Mark all  notifications as read',
 		action: async function($) {
+			if (!ensureAccess($))
+				return;
 			DATA.update('tbl_notification', { isread: true, dtread: NOW }).where('userid', $.user.id).callback($);
 		}
 	});
@@ -64,6 +100,8 @@ NEWSCHEMA('Notifications', function(schema) {
 		name: 'remove and mark all as read',
 		params: '*id:String',
 		action: async function($) {
+			if (!ensureAccess($))
+				return;
 			DATA.remove('tbl_notification').id($.params.id).callback($.done($.params.id));
 		}
 	});
@@ -71,6 +109,8 @@ NEWSCHEMA('Notifications', function(schema) {
 	schema.action('clear', {
 		name: 'Clear all notification of the user',
 		action: async function($) {
+			if (!ensureAccess($))
+				return;
 			DATA.remove('tbl_notification').where('userid', $.user.id).callback($.done());
 		}
 	});

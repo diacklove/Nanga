@@ -10,6 +10,10 @@ NEWSCHEMA('PCI', function(schema) {
 	schema.action('scope', {
 		name: 'List PCI Scope',
 		action: async function($) {
+			if (!global.hasPermission($.user, 'pci')) {
+				$.invalid('@(Not authorized)');
+				return;
+			}
 			var db = DB();
 			var response = await db.find('tbl_pci_scope').sort('zone').promise();
 			$.callback(response);
@@ -20,6 +24,10 @@ NEWSCHEMA('PCI', function(schema) {
 	schema.action('controls', {
 		name: 'List Security Controls',
 		action: async function($) {
+			if (!global.hasPermission($.user, 'pci')) {
+				$.invalid('@(Not authorized)');
+				return;
+			}
 			var db = DB();
 			var response = await db.find('tbl_security_control').sort('type').promise();
 			$.callback(response);
@@ -30,6 +38,10 @@ NEWSCHEMA('PCI', function(schema) {
 	schema.action('dashboard', {
 		name: 'PCI Dashboard',
 		action: async function($) {
+			if (!global.hasPermission($.user, 'pci')) {
+				$.invalid('@(Not authorized)');
+				return;
+			}
 			var db = DB();
 			var response = await db.find('view_pci_compliance').promise();
 			$.callback(response);
@@ -42,7 +54,7 @@ NEWSCHEMA('PCI', function(schema) {
 		params: '*id:String',
 		input: 'isinscope:Boolean,description:String',
 		action: async function($, model) {
-			if (!$.user.sa && $.user.role !== 'administrator') {
+			if (!global.hasPermission($.user, 'pci')) {
 				$.invalid('@(Not authorized)');
 				return;
 			}

@@ -1,5 +1,13 @@
 NEWSCHEMA('Users', function(schema) {
 
+	function getRoleDefinition(role) {
+		return global.getRoleDefinition ? global.getRoleDefinition(role) : null;
+	}
+
+	function getRoleDefinitions() {
+		return global.USER_ROLE_DEFINITIONS || [];
+	}
+
 	schema.define('id', 'String(50)');
 	schema.define('name', 'String(100)', true);
 	schema.define('email', 'Email', true);
@@ -13,7 +21,7 @@ NEWSCHEMA('Users', function(schema) {
 		name: 'List Users',
 		query: 'search:String',
 		action: async function($) {
-			if (!$.user.sa && $.user.role !== 'administrator') {
+			if (!global.hasPermission($.user, 'users')) {
 				$.invalid('@(Not authorized)');
 				return;
 			}
@@ -22,7 +30,10 @@ NEWSCHEMA('Users', function(schema) {
 			var builder = db.find('tbl_user');
 
 			builder.fields('id,name,email,role,status,dtcreated,dtlastlogin');
-			$.query.search && builder.search('name,email', $.query.search);
+			var search = $.query.search || ($.body && $.body.search);
+			search && builder.search('name,email', search);
+			var limit = $.query.limit || ($.body && $.body.limit);
+			limit && builder.take(+limit);
 			builder.sort('dtcreated', true);
 
 			var response = await builder.promise();
@@ -35,7 +46,7 @@ NEWSCHEMA('Users', function(schema) {
 		name: 'Read User',
 		params: '*id:String',
 		action: async function($) {
-			if (!$.user.sa && $.user.role !== 'administrator') {
+			if (!global.hasPermission($.user, 'users')) {
 				$.invalid('@(Not authorized)');
 				return;
 			}
@@ -57,7 +68,7 @@ NEWSCHEMA('Users', function(schema) {
 		name: 'Create User',
 		input: 'name:String,email:Email,phone:Phone,role:String,password:String',
 		action: async function($, model) {
-			if (!$.user.sa && $.user.role !== 'administrator') {
+			if (!global.hasPermission($.user, 'users')) {
 				$.invalid('@(Not authorized)');
 				return;
 			}
@@ -73,7 +84,8 @@ NEWSCHEMA('Users', function(schema) {
 			model.id = UID();
 			model.dtcreated = NOW;
 			model.status = 'active';
-			model.password = model.password.sha256(CONF.passwordizator);
+			model.passwordhash = model.password.sha256(CONF.passwordizator);
+			delete model.password;
 
 			await db.insert('tbl_user', model).promise();
 
@@ -90,7 +102,7 @@ NEWSCHEMA('Users', function(schema) {
 		params: '*id:String',
 		input: 'name:String,email:Email,phone:Phone,role:String,status:String,password:String',
 		action: async function($, model) {
-			if (!$.user.sa && $.user.role !== 'administrator') {
+			if (!global.hasPermission($.user, 'users')) {
 				$.invalid('@(Not authorized)');
 				return;
 			}
@@ -103,9 +115,10 @@ NEWSCHEMA('Users', function(schema) {
 				return;
 			}
 
-			if (model.password && model.password.length > 0)
-				model.password = model.password.sha256(CONF.passwordizator);
-			else
+			if (model.password && model.password.length > 0) {
+				model.passwordhash = model.password.sha256(CONF.passwordizator);
+				delete model.password;
+			} else
 				delete model.password;
 
 			await db.update('tbl_user', model).where('id', $.params.id).promise();
@@ -130,7 +143,7 @@ NEWSCHEMA('Users', function(schema) {
 		name: 'Remove User',
 		params: '*id:String',
 		action: async function($) {
-			if (!$.user.sa && $.user.role !== 'administrator') {
+			if (!global.hasPermission($.user, 'users')) {
 				$.invalid('@(Not authorized)');
 				return;
 			}
@@ -142,6 +155,60 @@ NEWSCHEMA('Users', function(schema) {
 			audit($, 'delete', $.params.id, 'User deleted (logical)');
 
 			$.success();
+		}
+	});
+
+	// List roles
+	schema.action('roles', {
+		name: 'List Roles',
+		action: async function($) {
+			$.callback(getRoleDefinitions());
+		}
+	});
+
+	// Role permissions
+	schema.action('permissions', {
+		name: 'Role Permissions',
+		query: 'role:String',
+		input: 'role:String',
+		action: async function($) {
+			var role = $.query.role || $.body?.role || $.user.role;
+			var definition = getRoleDefinition(role);
+			if (!definition) {
+				$.invalid('@(Role not found)');
+				return;
+			}
+			$.callback({
+				role: definition.id,
+				permissions: definition.permissions,
+				description: definition.description
+			});
+		}
+	});
+
+	// User activity
+	schema.action('activity', {
+		name: 'User Activity',
+		params: '*id:String',
+		query: 'limit:Number',
+		action: async function($) {
+			if (!global.hasPermission($.user, 'users') && $.user.id !== $.params.id) {
+				$.invalid('@(Not authorized)');
+				return;
+			}
+
+			var db = DB();
+			var limit = $.query.limit || $.body.limit;
+			limit = limit ? +limit : 20;
+			var builder = db.find('tbl_audit_log');
+
+			builder.where('userid', $.params.id);
+			builder.fields('id,action,resource,ipaddress,result,dtcreated');
+			builder.sort('dtcreated', true);
+			builder.take(limit);
+
+			var response = await builder.promise();
+			$.callback(response);
 		}
 	});
 

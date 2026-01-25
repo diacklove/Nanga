@@ -11,6 +11,11 @@ NEWSCHEMA('Fraud', function(schema) {
 		name: 'List Fraud Scores',
 		query: 'search:String',
 		action: async function($) {
+			if (!global.hasPermission($.user, 'fraud')) {
+				$.invalid('@(Not authorized)');
+				return;
+			}
+
 			var db = DB();
 			var builder = db.find('view_fraud_monitoring'); // Using the view defined in SQL
 
@@ -27,6 +32,10 @@ NEWSCHEMA('Fraud', function(schema) {
 		name: 'Ingest Fraud Score',
 		input: 'transactionid:String,model:String,decision:String,riskscore:Number',
 		action: async function($, model) {
+			if (!global.hasPermission($.user, 'fraud')) {
+				$.invalid('@(Not authorized)');
+				return;
+			}
 			
 			var db = DB();
 			model.id = UID();

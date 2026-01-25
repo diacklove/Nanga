@@ -12,8 +12,9 @@ exports.install = function() {
 	ROUTE('-API    /api/    +account_create                      --> Account/create');
 	ROUTE('-API    /api/    +account_login                       --> Account/login');
 	ROUTE('+API    /api/    +account_logout                      --> Account/logout');
-	ROUTE('+API    /api/    +account_reset                       --> Account/reset');
-	ROUTE('+API    /api/    +account_verify                      --> Account/verify');
+	ROUTE('-API    /api/    +account_reset                       --> Account/reset');
+	ROUTE('-API    /api/    +account_request                     --> Account/request');
+	ROUTE('-API    /api/    +account_verify                      --> Account/verify');
 	ROUTE('+API    /api/    +account_update                      --> Account/update');
 	ROUTE('+API    /api/    +account_password                    --> Account/password');
 	ROUTE('+API    /api/    -account_notifications               --> *Customers/notifications');
@@ -23,4 +24,3 @@ exports.install = function() {
 	ROUTE('API    /api/    +account_google                      --> *Account/google');
 	ROUTE('API    /api/    +account_github                      --> *Account/github');
 };
-

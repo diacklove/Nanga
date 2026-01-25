@@ -17,6 +17,11 @@ NEWSCHEMA('Transactions', function(schema) {
 		name: 'List Transactions',
 		query: 'search:String',
 		action: async function($) {
+			if (!global.hasPermission($.user, 'transactions')) {
+				$.invalid('@(Not authorized)');
+				return;
+			}
+
 			var db = DB();
 			var builder = db.find('tbl_transaction');
 
@@ -33,6 +38,11 @@ NEWSCHEMA('Transactions', function(schema) {
 		name: 'Read Transaction',
 		params: '*id:String',
 		action: async function($) {
+			if (!global.hasPermission($.user, 'transactions')) {
+				$.invalid('@(Not authorized)');
+				return;
+			}
+
 			var db = DB();
 			var item = await db.read('tbl_transaction').where('id', $.params.id).promise();
 
@@ -50,8 +60,10 @@ NEWSCHEMA('Transactions', function(schema) {
 		name: 'Ingest Transaction',
 		input: 'terminalid:String,reference:String,currency:String,channel:String,country:String,city:String,cardhash:String,status:String,amount:Number,dttransaction:Date',
 		action: async function($, model) {
-			// This might be called by a system user or API key, ensuring 'users' or 'terminals' role
-			// For now, allow authenticated users.
+			if (!global.hasPermission($.user, 'transactions')) {
+				$.invalid('@(Not authorized)');
+				return;
+			}
 
 			var db = DB();
 			model.id = UID();

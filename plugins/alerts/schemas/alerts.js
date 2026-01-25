@@ -13,12 +13,10 @@ NEWSCHEMA('Alerts', function(schema) {
 		query: 'search:String',
 		action: async function($) {
 			var db = DB();
-			// Use view if preferring active only, but usually admin wants all.
-			// Spec says "store alerts... keep historical trace".
-			var builder = db.find('tbl_alert');
+			var builder = db.find('view_alerts_ui');
 
-			$.query.search && builder.search('reason,level', $.query.search);
-			builder.sort('dtcreated', true);
+			$.query.search && builder.search('rule,severity,owner,reference', $.query.search);
+			builder.sort('timestamp', true);
 
 			var response = await builder.promise();
 			$.callback(response);
@@ -50,7 +48,7 @@ NEWSCHEMA('Alerts', function(schema) {
 		action: async function($, model) {
 			
 			// "resolution requires proper role"
-			if (!$.user.sa && $.user.role !== 'administrator' && $.user.role !== 'analyst') {
+			if (!global.hasPermission($.user, 'alerts')) {
 				$.invalid('@(Not authorized)');
 				return;
 			}

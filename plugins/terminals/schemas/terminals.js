@@ -47,7 +47,7 @@ NEWSCHEMA('Terminals', function(schema) {
 		name: 'Create Terminal',
 		input: 'name:String,type:String,country:String,city:String,latitude:Number,longitude:Number',
 		action: async function($, model) {
-			if (!$.user.sa && $.user.role !== 'administrator') {
+			if (!global.hasPermission($.user, 'terminals')) {
 				$.invalid('@(Not authorized)');
 				return;
 			}
@@ -69,7 +69,7 @@ NEWSCHEMA('Terminals', function(schema) {
 		params: '*id:String',
 		input: 'name:String,type:String,country:String,city:String,latitude:Number,longitude:Number,isactive:Boolean',
 		action: async function($, model) {
-			if (!$.user.sa && $.user.role !== 'administrator') {
+			if (!global.hasPermission($.user, 'terminals')) {
 				$.invalid('@(Not authorized)');
 				return;
 			}
@@ -86,7 +86,7 @@ NEWSCHEMA('Terminals', function(schema) {
 		name: 'Remove Terminal',
 		params: '*id:String',
 		action: async function($) {
-			if (!$.user.sa && $.user.role !== 'administrator') {
+			if (!global.hasPermission($.user, 'terminals')) {
 				$.invalid('@(Not authorized)');
 				return;
 			}

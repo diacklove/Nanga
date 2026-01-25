@@ -10,4 +10,7 @@ exports.install = function() {
 	ROUTE('+API    /api/    +users_create        --> Users/create');
 	ROUTE('+API    /api/    +users_update/{id}   --> Users/update');
 	ROUTE('+API    /api/    +users_remove/{id}   --> Users/remove');
+	ROUTE('+API    /api/    -users_roles         --> Users/roles');
+	ROUTE('+API    /api/    -users_permissions   --> Users/permissions');
+	ROUTE('+API    /api/    -users_activity/{id} --> Users/activity');
 };

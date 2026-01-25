@@ -20,8 +20,10 @@ NEWSCHEMA('Account', function (schema) {
             model.dtcreated = NOW;
             model.role = 'analyst';
             model.token = GUID(60);
+            model.isconfirmed = false;
             // hash password
-            model.password = model.password.sha256(CONF.passwordizator);
+            model.passwordhash = model.password.sha256(CONF.passwordizator);
+            delete model.password;
 
             // insert user into database and send email
             await db.insert('tbl_user', model).promise();
@@ -65,7 +67,7 @@ NEWSCHEMA('Account', function (schema) {
             }
 
             // check if password is correct
-            if (user.password !== model.password.sha256(CONF.passwordizator)) {
+            if (user.passwordhash !== model.password.sha256(CONF.passwordizator)) {
                 $.invalid('@(Invalid Credentials)');
                 return;
             }
@@ -101,7 +103,7 @@ NEWSCHEMA('Account', function (schema) {
     // UPDATE ACTION
     schema.action('update', {
         name: 'Update Profile',
-        input: '*name:String,email:Email,phone:Phone,password:Password',
+        input: 'name:String,email:Email,phone:Phone,password:Password',
         action: async function ($, model) {
             var db = DB();
             // check if user with that email exists
@@ -112,12 +114,15 @@ NEWSCHEMA('Account', function (schema) {
                 return;
             }
             // check if password is correct
-            if (model.password && model.password!== $.user.password) {
+            if (model.password && user.passwordhash !== model.password.sha256(CONF.passwordizator)) {
                 $.invalid('@(Invalid credentials)');
                 return;
             }
-            // hash password
-            model.password = model.password.sha256(CONF.passwordizator);
+            // keep existing password hash
+            if (model.password) {
+                model.passwordhash = user.passwordhash;
+                delete model.password;
+            }
             // update user
             await db.update('tbl_user', model).where('id', $.user.id).promise();
             $.success();
@@ -128,7 +133,7 @@ NEWSCHEMA('Account', function (schema) {
     // Password reset
     schema.action('password', {
         name: 'Reset Password',
-        input: '*password:Password,confirm:Password',
+        input: '*password:Password,confirm:Password,current_password:Password',
         action: async function ($, model) {
             var db = DB();
             // check if password is correct
@@ -136,8 +141,17 @@ NEWSCHEMA('Account', function (schema) {
                 $.invalid('@(Passwords do not match)');
                 return;
             }
+            if (model.current_password) {
+                var current = await db.read('tbl_user').where('id', $.user.id).promise();
+                if (!current || current.passwordhash !== model.current_password.sha256(CONF.passwordizator)) {
+                    $.invalid('@(Invalid credentials)');
+                    return;
+                }
+            }
             // hash password
-            model.password = model.password.sha256(CONF.passwordizator);
+            model.passwordhash = model.password.sha256(CONF.passwordizator);
+            delete model.password;
+            delete model.current_password;
             // update user
             await db.update('tbl_user', model).where('id', $.user.id).promise();
             $.success();
@@ -205,7 +219,7 @@ NEWSCHEMA('Account', function (schema) {
     // verify reset token
     schema.action('reset', {
         name: 'Verify Reset Token',
-        input: '*token:String',
+        input: '*token:String,password:Password,confirm:Password',
         action: async function ($, model) {
             var db = DB();
             // check if user with that email exists
@@ -214,6 +228,17 @@ NEWSCHEMA('Account', function (schema) {
             if (!user) {
                 $.invalid('@(Invalid token)');
                 return;
+            }
+            if (model.password) {
+                if (model.password !== model.confirm) {
+                    $.invalid('@(Passwords do not match)');
+                    return;
+                }
+                var update = {
+                    passwordhash: model.password.sha256(CONF.passwordizator),
+                    token: null
+                };
+                await db.update('tbl_user', update).where('id', user.id).promise();
             }
             $.success();
         }
