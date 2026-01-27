@@ -20,3 +20,5 @@ FUNC.login = async function($, userid) {
 	await db.insert('tbl_session', session).promise();
 	$.success(session.token);
 };
+
+CONF.fraudservice = CONF.fraudservice || 'http://127.0.0.1:8010';

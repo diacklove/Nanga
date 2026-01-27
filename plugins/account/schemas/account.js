@@ -1,3 +1,5 @@
+const Fs = require('fs');
+
 // create newschema
 NEWSCHEMA('Account', function (schema) {
     // CREATE ACTION (not forget password confirm)
@@ -29,24 +31,12 @@ NEWSCHEMA('Account', function (schema) {
             await db.insert('tbl_user', model).promise();
 
 
-            // create session
-            var session = {};
-            session.id = UID();
-            session.userid = model.id;
-            session.dtcreated = NOW;
-            session.token = ENCRYPTREQ($, { id: session.id }, CONF.salt);
-            session.ip = $.ip;
-            session.ua = $.ua;
-            session.expires = NOW.add(CONF.cookie_expires);
-            session.device = $.ismobile ? 'mobile' : 'desktop';
-
-            delete MAIN.sessions[session.id];
-            MAIN.sessions[session.id] = session;
-            // insert session into database
-            await db.insert('tbl_session', session).promise();
-            // send session token to client
-            $.success(session.token);
-            model.email && MAIL(model.email, '@(Confirm account)', '/mail/user-create', model, '');
+            if (model.email) {
+                const template = PATH.root('views/mail/user-create.html');
+                if (Fs.existsSync(template))
+                    MAIL(model.email, '@(Confirm account)', '/mail/user-create', model, '');
+            }
+            await FUNC.login($, model.id);
         }
     });
 

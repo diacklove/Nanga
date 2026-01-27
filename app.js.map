@@ -1,0 +1,832 @@
+{
+	"routes": [
+		{
+			"method": "GET",
+			"url": "/",
+			"auth": 1
+		},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "account",
+			"name": "Profile"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "account_list",
+			"name": "list accounts",
+			"query": "search:String"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 2,
+			"id": "account_create",
+			"input": "*name:String,email:Email,phone:Phone,password:String",
+			"name": "Create Account"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 2,
+			"id": "account_login",
+			"input": "*email:Email,password:Password",
+			"name": "Login"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "account_logout",
+			"name": "Logout"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 2,
+			"id": "account_reset",
+			"input": "*token:String,password:Password,confirm:Password",
+			"name": "Verify Reset Token"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 2,
+			"id": "account_request",
+			"input": "*email:Email",
+			"name": "Request Password Reset"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 2,
+			"id": "account_verify",
+			"input": "*token:String",
+			"name": "Verify Email"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "account_update",
+			"input": "name:String,email:Email,phone:Phone,password:Password",
+			"name": "Update Profile"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "account_password",
+			"input": "*password:Password,confirm:Password,current_password:Password",
+			"name": "Reset Password"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "account_notifications",
+			"error": "Action not found"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "account_notifications_read",
+			"error": "Action not found"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"id": "account_oauth",
+			"input": "*sessionid:String",
+			"name": "OAuth authorize"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"id": "account_google",
+			"name": "Google",
+			"query": "*page:{login|register}"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"id": "account_github",
+			"name": "Github",
+			"query": "*page:{login|register}"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "alerts",
+			"name": "List Alerts",
+			"query": "search:String"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "alerts_read",
+			"params": "id:string",
+			"name": "Read Alert"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "alerts_resolve",
+			"input": "status:String",
+			"name": "Resolve Alert"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "audit",
+			"name": "List Audit Logs",
+			"query": "search:String"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "fraud_scores",
+			"name": "List Fraud Scores",
+			"query": "search:String"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "fraud_scores_create",
+			"input": "transactionid:String,model:String,decision:String,riskscore:Number",
+			"name": "Ingest Fraud Score"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "fraud_service_health",
+			"name": "Fraud Service Health"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "fraud_service_dataset",
+			"name": "Read Dataset"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id--:string",
+			"id": "fraud_service_training",
+			"name": "Read Training Job"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "fraud_service_model",
+			"input": "job_id:String,dataset_id:String,algorithm:String,metrics:Object,artifact_uri:String",
+			"name": "Register Model"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id--:string",
+			"id": "fraud_service_activate",
+			"name": "Activate Model"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "fraud_service_active",
+			"name": "Get Active Model"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "fraud_service_inference",
+			"input": "record:Object,records:[Object]",
+			"name": "Run Inference"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "fraud_service_infer_store",
+			"input": "record:Object,records:[Object]",
+			"name": "Run Inference and Persist Scores"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "fraud_service_pipeline",
+			"input": "dataset_id:String,pipeline_name:String,parameters:Object",
+			"name": "Run Spark Pipeline"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "notifications",
+			"name": "List all notifications",
+			"query": "search:String,title:String,isread:Boolean"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "notifications_list",
+			"input": "*filter:{all|unread}",
+			"name": "List all notifications"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "notifications_read",
+			"name": "Read a specific notification"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "notifications_mark_read",
+			"name": "Mark as read a specific notification"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "notifications_all_read",
+			"name": "Mark all  notifications as read"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "notifications_open",
+			"name": "Unread notification count"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "notifications_remove",
+			"name": "remove and mark all as read"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "notifications_clear",
+			"name": "Clear all notification of the user"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "pci_scope",
+			"name": "List PCI Scope"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "pci_controls",
+			"name": "List Security Controls"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "pci_dashboard",
+			"name": "PCI Dashboard"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "pci_scope_update",
+			"input": "isinscope:Boolean,description:String",
+			"name": "Update PCI Scope"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "pci_requirements",
+			"name": "List PCI Requirements"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "pci_requirement",
+			"name": "Read PCI Requirement"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "pci_assessment_item",
+			"input": "status:String,notes:String",
+			"name": "Update PCI Assessment Item"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "pci_evidence",
+			"name": "List PCI Evidence",
+			"query": "requirementid:String,requirementitemid:String"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "pci_evidence_add",
+			"input": "requirementid:String,requirementitemid:String,title:String,category:String,description:String,uri:String",
+			"name": "Add PCI Evidence"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "pci_readiness",
+			"name": "PCI Readiness Summary"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "terminals",
+			"name": "List Terminals",
+			"query": "search:String"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "terminals_read",
+			"name": "Read Terminal"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "terminals_create",
+			"input": "name:String,type:String,country:String,city:String,latitude:Number,longitude:Number",
+			"name": "Create Terminal"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "terminals_update",
+			"input": "name:String,type:String,country:String,city:String,latitude:Number,longitude:Number,isactive:Boolean",
+			"name": "Update Terminal"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "terminals_remove",
+			"name": "Remove Terminal"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "transactions",
+			"name": "List Transactions",
+			"query": "search:String"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "transactions_read",
+			"name": "Read Transaction"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "transactions_create",
+			"input": "terminalid:String,reference:String,currency:String,channel:String,country:String,city:String,cardhash:String,status:String,amount:Number,dttransaction:Date",
+			"name": "Ingest Transaction"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "users",
+			"name": "List Users",
+			"query": "search:String"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "users_read",
+			"name": "Read User"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "users_create",
+			"input": "name:String,email:Email,phone:Phone,role:String,password:String",
+			"name": "Create User"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "users_update",
+			"input": "name:String,email:Email,phone:Phone,role:String,status:String,password:String",
+			"name": "Update User"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "users_remove",
+			"name": "Remove User"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "users_roles",
+			"name": "List Roles"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"id": "users_permissions",
+			"input": "role:String",
+			"name": "Role Permissions",
+			"query": "role:String"
+		},
+		{
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"params": "id:string",
+			"id": "users_activity",
+			"name": "User Activity",
+			"query": "limit:Number"
+		}
+	],
+	"plugins": [
+		{
+			"id": "account",
+			"name": "@(Account)",
+			"permissions": "account"
+		},
+		{
+			"id": "alerts",
+			"name": "@(Alerts)",
+			"permissions": "alerts"
+		},
+		{
+			"id": "audit",
+			"name": "@(Audit)",
+			"permissions": "audit"
+		},
+		{
+			"id": "fraud",
+			"name": "@(Fraud Analysis)",
+			"permissions": "fraud"
+		},
+		{
+			"id": "notifications",
+			"name": "Notification",
+			"permissions": "notification"
+		},
+		{
+			"id": "pci",
+			"name": "@(PCI Compliance)",
+			"permissions": "pci"
+		},
+		{
+			"id": "terminals",
+			"name": "@(Terminals)",
+			"permissions": "terminals"
+		},
+		{
+			"id": "transactions",
+			"name": "@(Transactions)",
+			"permissions": "transactions"
+		},
+		{
+			"id": "users",
+			"name": "@(Users)",
+			"permissions": "users"
+		}
+	],
+	"actions": [
+		{
+			"name": "Account/Notifications/list",
+			"query": "search:String,unseen:Boolean,starred:Boolean,type:String"
+		},
+		{
+			"name": "Account/Notifications/usernotifications",
+			"params": "*id:UID",
+			"query": "search:String,unseen:Boolean,starred:Boolean,type:String"
+		},
+		{
+			"name": "Account/Notifications/read",
+			"params": "id:UID"
+		},
+		{
+			"name": "Account/Notifications/seen",
+			"params": "*id:String"
+		},
+		{
+			"name": "Account/create",
+			"input": "*name:String,email:Email,phone:Phone,password:String"
+		},
+		{
+			"name": "Account/login",
+			"input": "*email:Email,password:Password"
+		},
+		{
+			"name": "Account/logout"
+		},
+		{
+			"name": "Account/profile"
+		},
+		{
+			"name": "Account/update",
+			"input": "name:String,email:Email,phone:Phone,password:Password"
+		},
+		{
+			"name": "Account/password",
+			"input": "*password:Password,confirm:Password,current_password:Password"
+		},
+		{
+			"name": "Account/list",
+			"query": "search:String"
+		},
+		{
+			"name": "Account/verify",
+			"input": "*token:String"
+		},
+		{
+			"name": "Account/request",
+			"input": "*email:Email"
+		},
+		{
+			"name": "Account/reset",
+			"input": "*token:String,password:Password,confirm:Password"
+		},
+		{
+			"name": "Account/oauth",
+			"input": "*sessionid:String"
+		},
+		{
+			"name": "Account/google",
+			"query": "*page:{login|register}"
+		},
+		{
+			"name": "Account/github",
+			"query": "*page:{login|register}"
+		},
+		{
+			"name": "Alerts/query",
+			"query": "search:String"
+		},
+		{
+			"name": "Alerts/read",
+			"params": "*id:String"
+		},
+		{
+			"name": "Alerts/resolve",
+			"params": "*id:String",
+			"input": "status:String"
+		},
+		{
+			"name": "Audit/query",
+			"query": "search:String"
+		},
+		{
+			"name": "Fraud/query",
+			"query": "search:String"
+		},
+		{
+			"name": "Fraud/create",
+			"input": "transactionid:String,model:String,decision:String,riskscore:Number"
+		},
+		{
+			"name": "Fraud/health"
+		},
+		{
+			"name": "Fraud/dataset_register",
+			"input": "dataset_id:String,name:String,version:String,source:String,schema_hash:String,features:[String],metadata:Object"
+		},
+		{
+			"name": "Fraud/dataset_read",
+			"params": "*id:String"
+		},
+		{
+			"name": "Fraud/training_create",
+			"input": "dataset_id:String,algorithm:String,hyperparameters:Object"
+		},
+		{
+			"name": "Fraud/training_read",
+			"params": "*id:String"
+		},
+		{
+			"name": "Fraud/model_register",
+			"input": "job_id:String,dataset_id:String,algorithm:String,metrics:Object,artifact_uri:String"
+		},
+		{
+			"name": "Fraud/model_activate",
+			"params": "*id:String"
+		},
+		{
+			"name": "Fraud/model_active"
+		},
+		{
+			"name": "Fraud/inference",
+			"input": "record:Object,records:[Object]"
+		},
+		{
+			"name": "Fraud/inference_persist",
+			"input": "record:Object,records:[Object]"
+		},
+		{
+			"name": "Fraud/pipeline_run",
+			"input": "dataset_id:String,pipeline_name:String,parameters:Object"
+		},
+		{
+			"name": "Notifications/list",
+			"query": "search:String,title:String,isread:Boolean"
+		},
+		{
+			"name": "Notifications/listing",
+			"input": "*filter:{all|unread}"
+		},
+		{
+			"name": "Notifications/open"
+		},
+		{
+			"name": "Notifications/read",
+			"params": "*id:String"
+		},
+		{
+			"name": "Notifications/mark_read",
+			"params": "*id:String"
+		},
+		{
+			"name": "Notifications/all_read"
+		},
+		{
+			"name": "Notifications/remove",
+			"params": "*id:String"
+		},
+		{
+			"name": "Notifications/clear"
+		},
+		{
+			"name": "PCI/scope"
+		},
+		{
+			"name": "PCI/controls"
+		},
+		{
+			"name": "PCI/dashboard"
+		},
+		{
+			"name": "PCI/scope_update",
+			"params": "*id:String",
+			"input": "isinscope:Boolean,description:String"
+		},
+		{
+			"name": "PCI/requirements"
+		},
+		{
+			"name": "PCI/requirement",
+			"params": "*id:String"
+		},
+		{
+			"name": "PCI/assessment_item_update",
+			"params": "*id:String",
+			"input": "status:String,notes:String"
+		},
+		{
+			"name": "PCI/evidence",
+			"query": "requirementid:String,requirementitemid:String"
+		},
+		{
+			"name": "PCI/evidence_add",
+			"input": "requirementid:String,requirementitemid:String,title:String,category:String,description:String,uri:String"
+		},
+		{
+			"name": "PCI/readiness"
+		},
+		{
+			"name": "Terminals/query",
+			"query": "search:String"
+		},
+		{
+			"name": "Terminals/read",
+			"params": "*id:String"
+		},
+		{
+			"name": "Terminals/create",
+			"input": "name:String,type:String,country:String,city:String,latitude:Number,longitude:Number"
+		},
+		{
+			"name": "Terminals/update",
+			"params": "*id:String",
+			"input": "name:String,type:String,country:String,city:String,latitude:Number,longitude:Number,isactive:Boolean"
+		},
+		{
+			"name": "Terminals/remove",
+			"params": "*id:String"
+		},
+		{
+			"name": "Transactions/query",
+			"query": "search:String"
+		},
+		{
+			"name": "Transactions/read",
+			"params": "*id:String"
+		},
+		{
+			"name": "Transactions/create",
+			"input": "terminalid:String,reference:String,currency:String,channel:String,country:String,city:String,cardhash:String,status:String,amount:Number,dttransaction:Date"
+		},
+		{
+			"name": "Users/query",
+			"query": "search:String"
+		},
+		{
+			"name": "Users/read",
+			"params": "*id:String"
+		},
+		{
+			"name": "Users/create",
+			"input": "name:String,email:Email,phone:Phone,role:String,password:String"
+		},
+		{
+			"name": "Users/update",
+			"params": "*id:String",
+			"input": "name:String,email:Email,phone:Phone,role:String,status:String,password:String"
+		},
+		{
+			"name": "Users/remove",
+			"params": "*id:String"
+		},
+		{
+			"name": "Users/roles"
+		},
+		{
+			"name": "Users/permissions",
+			"input": "role:String",
+			"query": "role:String"
+		},
+		{
+			"name": "Users/activity",
+			"params": "*id:String",
+			"query": "limit:Number"
+		}
+	]
+}

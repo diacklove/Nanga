@@ -8,13 +8,6 @@ NEWSCHEMA('Users', function(schema) {
 		return global.USER_ROLE_DEFINITIONS || [];
 	}
 
-	schema.define('id', 'String(50)');
-	schema.define('name', 'String(100)', true);
-	schema.define('email', 'Email', true);
-	schema.define('phone', 'Phone');
-	schema.define('role', 'String(50)', true);
-	schema.define('status', 'String(20)');
-	schema.define('password', 'String(100)');
 
 	// List users
 	schema.action('query', {

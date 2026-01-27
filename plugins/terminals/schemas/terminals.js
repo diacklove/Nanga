@@ -1,13 +1,5 @@
 NEWSCHEMA('Terminals', function(schema) {
 
-	schema.define('id', 'String(50)');
-	schema.define('name', 'String(100)', true);
-	schema.define('type', 'String(50)', true);
-	schema.define('country', 'String(2)', true);
-	schema.define('city', 'String(100)', true);
-	schema.define('latitude', 'Number');
-	schema.define('longitude', 'Number');
-	schema.define('isactive', 'Boolean');
 
 	// List terminals
 	schema.action('query', {

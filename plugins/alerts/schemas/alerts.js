@@ -1,11 +1,5 @@
 NEWSCHEMA('Alerts', function(schema) {
 
-	schema.define('id', 'String(50)');
-	schema.define('transactionid', 'String(50)');
-	schema.define('userid', 'String(50)');
-	schema.define('level', 'String(20)');
-	schema.define('reason', 'String(200)');
-	schema.define('status', 'String(20)');
 
 	// List alerts
 	schema.action('query', {

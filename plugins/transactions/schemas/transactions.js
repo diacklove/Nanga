@@ -1,16 +1,5 @@
 NEWSCHEMA('Transactions', function(schema) {
 
-	schema.define('id', 'String(50)');
-	schema.define('terminalid', 'String(50)', true);
-	schema.define('reference', 'String(100)', true);
-	schema.define('currency', 'String(3)', true);
-	schema.define('channel', 'String(20)', true);
-	schema.define('country', 'String(2)', true);
-	schema.define('city', 'String(100)', true);
-	schema.define('cardhash', 'String(200)', true);
-	schema.define('status', 'String(20)', true);
-	schema.define('amount', 'Number', true);
-	schema.define('dttransaction', 'Date', true);
 
 	// List transactions
 	schema.action('query', {

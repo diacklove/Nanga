@@ -1,0 +1,872 @@
+{
+	"routes": [
+		{
+			"id": "account",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_list",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_create",
+			"method": "API",
+			"url": "/api/",
+			"auth": 2,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_login",
+			"method": "API",
+			"url": "/api/",
+			"auth": 2,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_logout",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_reset",
+			"method": "API",
+			"url": "/api/",
+			"auth": 2,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_request",
+			"method": "API",
+			"url": "/api/",
+			"auth": 2,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_verify",
+			"method": "API",
+			"url": "/api/",
+			"auth": 2,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_update",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_password",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_notifications",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_notifications_read",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_oauth",
+			"method": "API",
+			"url": "/api/",
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_google",
+			"method": "API",
+			"url": "/api/",
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "account_github",
+			"method": "API",
+			"url": "/api/",
+			"error": "Action not found",
+			"owner": "plugin_account"
+		},
+		{
+			"id": "alerts",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_alerts"
+		},
+		{
+			"id": "alerts_read",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_alerts"
+		},
+		{
+			"id": "alerts_resolve",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_alerts"
+		},
+		{
+			"id": "audit",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_audit"
+		},
+		{
+			"id": "fraud_scores",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_fraud"
+		},
+		{
+			"id": "fraud_scores_create",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_fraud"
+		},
+		{
+			"id": "fraud_service_health",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_fraud"
+		},
+		{
+			"id": "fraud_service_dataset",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_fraud"
+		},
+		{
+			"id": "fraud_service_training",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_fraud"
+		},
+		{
+			"id": "fraud_service_model",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_fraud"
+		},
+		{
+			"id": "fraud_service_activate",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_fraud"
+		},
+		{
+			"id": "fraud_service_active",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_fraud"
+		},
+		{
+			"id": "fraud_service_inference",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_fraud"
+		},
+		{
+			"id": "fraud_service_infer_store",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_fraud"
+		},
+		{
+			"id": "fraud_service_pipeline",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_fraud"
+		},
+		{
+			"id": "notifications",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_notifications"
+		},
+		{
+			"id": "notifications_list",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_notifications"
+		},
+		{
+			"id": "notifications_read",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_notifications"
+		},
+		{
+			"id": "notifications_mark_read",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_notifications"
+		},
+		{
+			"id": "notifications_all_read",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_notifications"
+		},
+		{
+			"id": "notifications_open",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_notifications"
+		},
+		{
+			"id": "notifications_remove",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_notifications"
+		},
+		{
+			"id": "notifications_clear",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_notifications"
+		},
+		{
+			"id": "pci_scope",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_pci"
+		},
+		{
+			"id": "pci_controls",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_pci"
+		},
+		{
+			"id": "pci_dashboard",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_pci"
+		},
+		{
+			"id": "pci_scope_update",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_pci"
+		},
+		{
+			"id": "pci_requirements",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_pci"
+		},
+		{
+			"id": "pci_requirement",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_pci"
+		},
+		{
+			"id": "pci_assessment_item",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_pci"
+		},
+		{
+			"id": "pci_evidence",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_pci"
+		},
+		{
+			"id": "pci_evidence_add",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_pci"
+		},
+		{
+			"id": "pci_readiness",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_pci"
+		},
+		{
+			"id": "terminals",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_terminals"
+		},
+		{
+			"id": "terminals_read",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_terminals"
+		},
+		{
+			"id": "terminals_create",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_terminals"
+		},
+		{
+			"id": "terminals_update",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_terminals"
+		},
+		{
+			"id": "terminals_remove",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_terminals"
+		},
+		{
+			"id": "transactions",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_transactions"
+		},
+		{
+			"id": "transactions_read",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_transactions"
+		},
+		{
+			"id": "transactions_create",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_transactions"
+		},
+		{
+			"id": "users",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_users"
+		},
+		{
+			"id": "users_read",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_users"
+		},
+		{
+			"id": "users_create",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_users"
+		},
+		{
+			"id": "users_update",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_users"
+		},
+		{
+			"id": "users_remove",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_users"
+		},
+		{
+			"id": "users_roles",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_users"
+		},
+		{
+			"id": "users_permissions",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_users"
+		},
+		{
+			"id": "users_activity",
+			"method": "API",
+			"url": "/api/",
+			"auth": 1,
+			"error": "Action not found",
+			"owner": "plugin_users"
+		},
+		{
+			"method": "POST",
+			"url": "/api/",
+			"auth": 1,
+			"owner": "plugin_account"
+		},
+		{
+			"method": "POST",
+			"url": "/api/",
+			"auth": 2,
+			"owner": "plugin_account"
+		},
+		{
+			"method": "POST",
+			"url": "/api/",
+			"owner": "plugin_account"
+		}
+	],
+	"plugins": [
+		{
+			"id": "account",
+			"name": "@(Account)",
+			"permissions": "account"
+		},
+		{
+			"id": "alerts",
+			"name": "@(Alerts)",
+			"permissions": "alerts"
+		},
+		{
+			"id": "audit",
+			"name": "@(Audit)",
+			"permissions": "audit"
+		},
+		{
+			"id": "fraud",
+			"name": "@(Fraud Analysis)",
+			"permissions": "fraud"
+		},
+		{
+			"id": "notifications",
+			"name": "Notification",
+			"permissions": "notification"
+		},
+		{
+			"id": "pci",
+			"name": "@(PCI Compliance)",
+			"permissions": "pci"
+		},
+		{
+			"id": "terminals",
+			"name": "@(Terminals)",
+			"permissions": "terminals"
+		},
+		{
+			"id": "transactions",
+			"name": "@(Transactions)",
+			"permissions": "transactions"
+		},
+		{
+			"id": "users",
+			"name": "@(Users)",
+			"permissions": "users"
+		}
+	],
+	"actions": [
+		{
+			"name": "Account/Notifications --> list",
+			"query": "search:String,unseen:Boolean,starred:Boolean,type:String"
+		},
+		{
+			"name": "Account/Notifications --> usernotifications",
+			"params": "*id:UID",
+			"query": "search:String,unseen:Boolean,starred:Boolean,type:String"
+		},
+		{
+			"name": "Account/Notifications --> read",
+			"params": "id:UID"
+		},
+		{
+			"name": "Account/Notifications --> seen",
+			"params": "*id:String"
+		},
+		{
+			"name": "Account --> create",
+			"input": "*name:String,email:Email,phone:Phone,password:String"
+		},
+		{
+			"name": "Account --> login",
+			"input": "*email:Email,password:Password"
+		},
+		{
+			"name": "Account --> logout"
+		},
+		{
+			"name": "Account --> profile"
+		},
+		{
+			"name": "Account --> update",
+			"input": "name:String,email:Email,phone:Phone,password:Password"
+		},
+		{
+			"name": "Account --> password",
+			"input": "*password:Password,confirm:Password,current_password:Password"
+		},
+		{
+			"name": "Account --> list",
+			"query": "search:String"
+		},
+		{
+			"name": "Account --> verify",
+			"input": "*token:String"
+		},
+		{
+			"name": "Account --> request",
+			"input": "*email:Email"
+		},
+		{
+			"name": "Account --> reset",
+			"input": "*token:String,password:Password,confirm:Password"
+		},
+		{
+			"name": "Account --> oauth",
+			"input": "*sessionid:String"
+		},
+		{
+			"name": "Account --> google",
+			"query": "*page:{login|register}"
+		},
+		{
+			"name": "Account --> github",
+			"query": "*page:{login|register}"
+		},
+		{
+			"name": "Alerts --> query",
+			"input": "id:string,transactionid:string,userid:string,level:string,reason:string,status:string",
+			"query": "search:String"
+		},
+		{
+			"name": "Alerts --> read",
+			"params": "*id:String",
+			"input": "id:string,transactionid:string,userid:string,level:string,reason:string,status:string"
+		},
+		{
+			"name": "Alerts --> resolve",
+			"params": "*id:String",
+			"input": "status:String"
+		},
+		{
+			"name": "Audit --> query",
+			"input": "id:string,userid:string,action:string,resource:string,result:string,ipaddress:string,dtcreated:date",
+			"query": "search:String"
+		},
+		{
+			"name": "Fraud --> query",
+			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number",
+			"query": "search:String"
+		},
+		{
+			"name": "Fraud --> create",
+			"input": "transactionid:String,model:String,decision:String,riskscore:Number"
+		},
+		{
+			"name": "Fraud --> health",
+			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number"
+		},
+		{
+			"name": "Fraud --> dataset_register",
+			"input": "dataset_id:String,name:String,version:String,source:String,schema_hash:String,features:[String],metadata:Object"
+		},
+		{
+			"name": "Fraud --> dataset_read",
+			"params": "*id:String",
+			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number"
+		},
+		{
+			"name": "Fraud --> training_create",
+			"input": "dataset_id:String,algorithm:String,hyperparameters:Object"
+		},
+		{
+			"name": "Fraud --> training_read",
+			"params": "*id:String",
+			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number"
+		},
+		{
+			"name": "Fraud --> model_register",
+			"input": "job_id:String,dataset_id:String,algorithm:String,metrics:Object,artifact_uri:String"
+		},
+		{
+			"name": "Fraud --> model_activate",
+			"params": "*id:String",
+			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number"
+		},
+		{
+			"name": "Fraud --> model_active",
+			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number"
+		},
+		{
+			"name": "Fraud --> inference",
+			"input": "record:Object,records:[Object]"
+		},
+		{
+			"name": "Fraud --> inference_persist",
+			"input": "record:Object,records:[Object]"
+		},
+		{
+			"name": "Fraud --> pipeline_run",
+			"input": "dataset_id:String,pipeline_name:String,parameters:Object"
+		},
+		{
+			"name": "Notifications --> list",
+			"query": "search:String,title:String,isread:Boolean"
+		},
+		{
+			"name": "Notifications --> listing",
+			"input": "*filter:{all|unread}"
+		},
+		{
+			"name": "Notifications --> open"
+		},
+		{
+			"name": "Notifications --> read",
+			"params": "*id:String"
+		},
+		{
+			"name": "Notifications --> mark_read",
+			"params": "*id:String"
+		},
+		{
+			"name": "Notifications --> all_read"
+		},
+		{
+			"name": "Notifications --> remove",
+			"params": "*id:String"
+		},
+		{
+			"name": "Notifications --> clear"
+		},
+		{
+			"name": "PCI --> scope",
+			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+		},
+		{
+			"name": "PCI --> controls",
+			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+		},
+		{
+			"name": "PCI --> dashboard",
+			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+		},
+		{
+			"name": "PCI --> scope_update",
+			"params": "*id:String",
+			"input": "isinscope:Boolean,description:String"
+		},
+		{
+			"name": "PCI --> requirements",
+			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+		},
+		{
+			"name": "PCI --> requirement",
+			"params": "*id:String",
+			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+		},
+		{
+			"name": "PCI --> assessment_item_update",
+			"params": "*id:String",
+			"input": "status:String,notes:String"
+		},
+		{
+			"name": "PCI --> evidence",
+			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string",
+			"query": "requirementid:String,requirementitemid:String"
+		},
+		{
+			"name": "PCI --> evidence_add",
+			"input": "requirementid:String,requirementitemid:String,title:String,category:String,description:String,uri:String"
+		},
+		{
+			"name": "PCI --> readiness",
+			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+		},
+		{
+			"name": "Terminals --> query",
+			"input": "id:string,*name:string,*type:string,*country:string,*city:string,latitude:number,longitude:number,isactive:boolean",
+			"query": "search:String"
+		},
+		{
+			"name": "Terminals --> read",
+			"params": "*id:String",
+			"input": "id:string,*name:string,*type:string,*country:string,*city:string,latitude:number,longitude:number,isactive:boolean"
+		},
+		{
+			"name": "Terminals --> create",
+			"input": "name:String,type:String,country:String,city:String,latitude:Number,longitude:Number"
+		},
+		{
+			"name": "Terminals --> update",
+			"params": "*id:String",
+			"input": "name:String,type:String,country:String,city:String,latitude:Number,longitude:Number,isactive:Boolean"
+		},
+		{
+			"name": "Terminals --> remove",
+			"params": "*id:String",
+			"input": "id:string,*name:string,*type:string,*country:string,*city:string,latitude:number,longitude:number,isactive:boolean"
+		},
+		{
+			"name": "Transactions --> query",
+			"input": "id:string,*terminalid:string,*reference:string,*currency:string,*channel:string,*country:string,*city:string,*cardhash:string,*status:string,*amount:number,*dttransaction:date",
+			"query": "search:String"
+		},
+		{
+			"name": "Transactions --> read",
+			"params": "*id:String",
+			"input": "id:string,*terminalid:string,*reference:string,*currency:string,*channel:string,*country:string,*city:string,*cardhash:string,*status:string,*amount:number,*dttransaction:date"
+		},
+		{
+			"name": "Transactions --> create",
+			"input": "terminalid:String,reference:String,currency:String,channel:String,country:String,city:String,cardhash:String,status:String,amount:Number,dttransaction:Date"
+		},
+		{
+			"name": "Users --> query",
+			"input": "id:string,*name:string,*email:string,phone:string,*role:string,status:string,password:string",
+			"query": "search:String"
+		},
+		{
+			"name": "Users --> read",
+			"params": "*id:String",
+			"input": "id:string,*name:string,*email:string,phone:string,*role:string,status:string,password:string"
+		},
+		{
+			"name": "Users --> create",
+			"input": "name:String,email:Email,phone:Phone,role:String,password:String"
+		},
+		{
+			"name": "Users --> update",
+			"params": "*id:String",
+			"input": "name:String,email:Email,phone:Phone,role:String,status:String,password:String"
+		},
+		{
+			"name": "Users --> remove",
+			"params": "*id:String",
+			"input": "id:string,*name:string,*email:string,phone:string,*role:string,status:string,password:string"
+		},
+		{
+			"name": "Users --> roles",
+			"input": "id:string,*name:string,*email:string,phone:string,*role:string,status:string,password:string"
+		},
+		{
+			"name": "Users --> permissions",
+			"input": "role:String",
+			"query": "role:String"
+		},
+		{
+			"name": "Users --> activity",
+			"params": "*id:String",
+			"input": "id:string,*name:string,*email:string,phone:string,*role:string,status:string,password:string",
+			"query": "limit:Number"
+		}
+	]
+}

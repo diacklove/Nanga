@@ -1,0 +1,6 @@
+name                         : Nanga app
+passwordizor     (generate)  : 10
+cookie           (generate)  : 10
+coookie_expire               : 30 days
+cookie_expires               : 30 days
+database                     : postgresql://total:platform@zapwize.com:5432/pcidss                          
