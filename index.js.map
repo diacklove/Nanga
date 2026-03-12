@@ -522,6 +522,12 @@
 			"owner": "plugin_account"
 		},
 		{
+			"method": "GET",
+			"url": "/",
+			"auth": 1,
+			"owner": "controller_index"
+		},
+		{
 			"method": "POST",
 			"url": "/api/",
 			"owner": "plugin_account"
@@ -644,13 +650,11 @@
 		},
 		{
 			"name": "Alerts --> query",
-			"input": "id:string,transactionid:string,userid:string,level:string,reason:string,status:string",
 			"query": "search:String"
 		},
 		{
 			"name": "Alerts --> read",
-			"params": "*id:String",
-			"input": "id:string,transactionid:string,userid:string,level:string,reason:string,status:string"
+			"params": "*id:String"
 		},
 		{
 			"name": "Alerts --> resolve",
@@ -659,12 +663,10 @@
 		},
 		{
 			"name": "Audit --> query",
-			"input": "id:string,userid:string,action:string,resource:string,result:string,ipaddress:string,dtcreated:date",
 			"query": "search:String"
 		},
 		{
 			"name": "Fraud --> query",
-			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number",
 			"query": "search:String"
 		},
 		{
@@ -672,8 +674,7 @@
 			"input": "transactionid:String,model:String,decision:String,riskscore:Number"
 		},
 		{
-			"name": "Fraud --> health",
-			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number"
+			"name": "Fraud --> health"
 		},
 		{
 			"name": "Fraud --> dataset_register",
@@ -681,8 +682,7 @@
 		},
 		{
 			"name": "Fraud --> dataset_read",
-			"params": "*id:String",
-			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number"
+			"params": "*id:String"
 		},
 		{
 			"name": "Fraud --> training_create",
@@ -690,8 +690,7 @@
 		},
 		{
 			"name": "Fraud --> training_read",
-			"params": "*id:String",
-			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number"
+			"params": "*id:String"
 		},
 		{
 			"name": "Fraud --> model_register",
@@ -699,12 +698,10 @@
 		},
 		{
 			"name": "Fraud --> model_activate",
-			"params": "*id:String",
-			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number"
+			"params": "*id:String"
 		},
 		{
-			"name": "Fraud --> model_active",
-			"input": "id:string,*transactionid:string,model:string,decision:string,riskscore:number"
+			"name": "Fraud --> model_active"
 		},
 		{
 			"name": "Fraud --> inference",
@@ -748,16 +745,13 @@
 			"name": "Notifications --> clear"
 		},
 		{
-			"name": "PCI --> scope",
-			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+			"name": "PCI --> scope"
 		},
 		{
-			"name": "PCI --> controls",
-			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+			"name": "PCI --> controls"
 		},
 		{
-			"name": "PCI --> dashboard",
-			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+			"name": "PCI --> dashboard"
 		},
 		{
 			"name": "PCI --> scope_update",
@@ -765,13 +759,11 @@
 			"input": "isinscope:Boolean,description:String"
 		},
 		{
-			"name": "PCI --> requirements",
-			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+			"name": "PCI --> requirements"
 		},
 		{
 			"name": "PCI --> requirement",
-			"params": "*id:String",
-			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+			"params": "*id:String"
 		},
 		{
 			"name": "PCI --> assessment_item_update",
@@ -780,7 +772,6 @@
 		},
 		{
 			"name": "PCI --> evidence",
-			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string",
 			"query": "requirementid:String,requirementitemid:String"
 		},
 		{
@@ -788,18 +779,15 @@
 			"input": "requirementid:String,requirementitemid:String,title:String,category:String,description:String,uri:String"
 		},
 		{
-			"name": "PCI --> readiness",
-			"input": "id:string,name:string,zone:string,description:string,isinscope:boolean,status:string,notes:string,title:string,category:string,uri:string"
+			"name": "PCI --> readiness"
 		},
 		{
 			"name": "Terminals --> query",
-			"input": "id:string,*name:string,*type:string,*country:string,*city:string,latitude:number,longitude:number,isactive:boolean",
 			"query": "search:String"
 		},
 		{
 			"name": "Terminals --> read",
-			"params": "*id:String",
-			"input": "id:string,*name:string,*type:string,*country:string,*city:string,latitude:number,longitude:number,isactive:boolean"
+			"params": "*id:String"
 		},
 		{
 			"name": "Terminals --> create",
@@ -812,18 +800,15 @@
 		},
 		{
 			"name": "Terminals --> remove",
-			"params": "*id:String",
-			"input": "id:string,*name:string,*type:string,*country:string,*city:string,latitude:number,longitude:number,isactive:boolean"
+			"params": "*id:String"
 		},
 		{
 			"name": "Transactions --> query",
-			"input": "id:string,*terminalid:string,*reference:string,*currency:string,*channel:string,*country:string,*city:string,*cardhash:string,*status:string,*amount:number,*dttransaction:date",
 			"query": "search:String"
 		},
 		{
 			"name": "Transactions --> read",
-			"params": "*id:String",
-			"input": "id:string,*terminalid:string,*reference:string,*currency:string,*channel:string,*country:string,*city:string,*cardhash:string,*status:string,*amount:number,*dttransaction:date"
+			"params": "*id:String"
 		},
 		{
 			"name": "Transactions --> create",
@@ -831,13 +816,11 @@
 		},
 		{
 			"name": "Users --> query",
-			"input": "id:string,*name:string,*email:string,phone:string,*role:string,status:string,password:string",
 			"query": "search:String"
 		},
 		{
 			"name": "Users --> read",
-			"params": "*id:String",
-			"input": "id:string,*name:string,*email:string,phone:string,*role:string,status:string,password:string"
+			"params": "*id:String"
 		},
 		{
 			"name": "Users --> create",
@@ -850,12 +833,10 @@
 		},
 		{
 			"name": "Users --> remove",
-			"params": "*id:String",
-			"input": "id:string,*name:string,*email:string,phone:string,*role:string,status:string,password:string"
+			"params": "*id:String"
 		},
 		{
-			"name": "Users --> roles",
-			"input": "id:string,*name:string,*email:string,phone:string,*role:string,status:string,password:string"
+			"name": "Users --> roles"
 		},
 		{
 			"name": "Users --> permissions",
@@ -865,7 +846,6 @@
 		{
 			"name": "Users --> activity",
 			"params": "*id:String",
-			"input": "id:string,*name:string,*email:string,phone:string,*role:string,status:string,password:string",
 			"query": "limit:Number"
 		}
 	]
