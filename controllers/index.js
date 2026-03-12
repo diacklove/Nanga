@@ -1,6 +1,6 @@
 exports.install = function() {
     CORS();
-    ROUTE('GET    /', index);
+    ROUTE('GET    /*', index);
     // rewrite error pages to json responses
     ROUTE('#400', ($) => jsonError($, 400));
     ROUTE('#401', ($) => jsonError($, 401));
@@ -11,8 +11,7 @@ exports.install = function() {
 }   
 
 function index($) {
-    $.layout('');
-    $.view('index');
+    $.file(PATH.root('views/index.html'));
 }
 
 function jsonError($, status) {
