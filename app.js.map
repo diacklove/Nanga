@@ -2,8 +2,7 @@
 	"routes": [
 		{
 			"method": "GET",
-			"url": "/",
-			"auth": 1
+			"url": "/*"
 		},
 		{},
 		{},

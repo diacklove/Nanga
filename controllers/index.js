@@ -1,6 +1,6 @@
 exports.install = function() {
-    ROUTE('+GET    /', index);
-
+    CORS();
+    ROUTE('GET    /*', index);
     // rewrite error pages to json responses
     ROUTE('#400', ($) => jsonError($, 400));
     ROUTE('#401', ($) => jsonError($, 401));
@@ -8,13 +8,11 @@ exports.install = function() {
     ROUTE('#404', ($) => jsonError($, 404));
     ROUTE('#408', ($) => jsonError($, 408));
     ROUTE('#500', ($) => jsonError($, 500));
-
 }   
 
 function index($) {
-    $.plain('Nanga is running...');
+    $.file(PATH.root('views/index.html'));
 }
-
 
 function jsonError($, status) {
     let message = 'Unknown error';
